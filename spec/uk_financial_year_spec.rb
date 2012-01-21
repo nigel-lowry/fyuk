@@ -66,19 +66,19 @@ describe UkFinancialYear do
   
   describe "#to_s" do
     it "is the four-digit year then a '/' then a two-digit year" do
-      fy = UkFinancialYear.new(Date.parse '7 Apr 2011')
+      fy = UkFinancialYear.new Date.parse '7 Apr 2011'
       fy.to_s.should == '2011/12'
     end
 
     it "is 1999/00 for the turn of the millenium" do
-      fy = UkFinancialYear.new(Date.parse '7 Apr 1999')
+      fy = UkFinancialYear.new Date.parse '7 Apr 1999'
       fy.to_s.should == '1999/00'
     end
   end
 
   describe "#from_s" do
     it "is 2010/11 for '2010/11'" do
-      fy = UkFinancialYear.from_s('2010/11')
+      fy = UkFinancialYear.from_s '2010/11'
       fy.first_day.should == Date.parse('6 Apr 2010')
       fy.last_day.should == Date.parse('5 Apr 2011')
     end

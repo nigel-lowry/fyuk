@@ -74,7 +74,7 @@ class UkFinancialYear
     self.first_day == other.first_day
   end
 
-  # lesser financial years are those which occur first in time
+  # lesser financial years are those which occur earliest
   def <=>(other)
     self.first_day <=> other.first_day
   end

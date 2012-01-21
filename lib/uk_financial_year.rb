@@ -17,6 +17,7 @@ class UkFinancialYear
   # @param [String] s the two years of the financial year in the form
   # of the first year as four digits, a '/', then the last year as
   # two digits
+  # @raise [RuntimeError] if the string cannot be parsed to a financial year
   # @return [UkFinancialYear] the financial year specified by the string
   def UkFinancialYear.from_s s
     if /^(?<year1>\d{4})\/(?<year2>\d{2})$/ =~ s
@@ -50,6 +51,18 @@ class UkFinancialYear
     @range.include? date
   end
 
+  # returns the next financial year
+  # @return [UkFinancialYear] the next financial year
+  def next
+    UkFinancialYear.new self.first_day.next_year
+  end
+
+  # returns the previous financial year
+  # @return [UkFinancialYear] the previous financial year
+  def previous
+    UkFinancialYear.new self.first_day.prev_year
+  end
+
   # returns string representation of the financial year in the form '2000/01'
   # @return [String] representation in the form of the first year as four
   # digits, a '/', then the last year as two digits
@@ -62,7 +75,7 @@ class UkFinancialYear
     self.first_day == other.first_day
   end
 
-  # lesser financial years are those which occur first in time
+  # lesser financial years are those which occur earliest
   def <=>(other)
     self.first_day <=> other.first_day
   end

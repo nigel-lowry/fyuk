@@ -50,10 +50,14 @@ class UkFinancialYear
     @range.include? date
   end
 
+  # returns the next financial year
+  # @return [UkFinancialYear] the next financial year
   def next
     UkFinancialYear.new self.first_day.next_year
   end
 
+  # returns the previous financial year
+  # @return [UkFinancialYear] the previous financial year
   def previous
     UkFinancialYear.new self.first_day.prev_year
   end

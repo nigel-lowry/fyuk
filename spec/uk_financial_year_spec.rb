@@ -134,6 +134,32 @@ describe UkFinancialYear do
     end
   end 
 
+  describe "#adjacent" do
+    it "is true for two consecutive financial years in date order" do
+      fy1 = UkFinancialYear.from_s '2011/12'
+      fy2 = UkFinancialYear.from_s '2012/13'
+
+      fy1.should be_adjacent fy2
+      fy2.should be_adjacent fy1
+    end
+
+    it "is false for financial years which do not run together" do
+      fy1 = UkFinancialYear.from_s '2011/12'
+      fy2 = UkFinancialYear.from_s '2013/14'
+
+      fy1.should_not be_adjacent fy2
+      fy2.should_not be_adjacent fy1
+    end
+
+    it "is false for the same financial year" do
+      fy1 = UkFinancialYear.from_s '2011/12'
+      fy2 = UkFinancialYear.from_s '2011/12'
+
+      fy1.should_not be_adjacent fy2
+      fy2.should_not be_adjacent fy1
+    end
+  end
+
   describe "object comparison" do
     it "is less than for earlier FYs" do
       UkFinancialYear.new(Date.parse '5 Apr 2011').should be < UkFinancialYear.new(Date.parse '6 Apr 2011')

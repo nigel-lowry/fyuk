@@ -67,7 +67,8 @@ class UkFinancialYear
     self.first_day.next_year == other_financial_year.first_day || self.first_day.prev_year == other_financial_year.first_day
   end
 
-  # returns string representation of the financial year in the form '2000/01'
+  # returns string representation of the financial year in the form '2000/01'.
+  # This is the form HMRC use.
   # @return [String] representation in the form of the first year as four
   # digits, a '/', then the last year as two digits
   def to_s

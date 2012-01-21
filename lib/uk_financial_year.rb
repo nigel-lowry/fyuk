@@ -1,3 +1,5 @@
+require 'date'
+
 class UkFinancialYear
   include Comparable
 
@@ -43,7 +45,7 @@ class UkFinancialYear
 
   private
     def start_date date
-      swap_date_that_year = date.change day: 6, month: 4
+      swap_date_that_year = Date.new date.year, 4, 6
       date >= swap_date_that_year ? swap_date_that_year : swap_date_that_year.prev_year
     end
 end

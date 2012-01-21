@@ -19,10 +19,12 @@ class UkFinancialYear
   # two digits
   # @return [UkFinancialYear] the financial year specified by the string
   def UkFinancialYear.from_s s
-    if /^20(?<year1>\d{2})\/(?<year2>\d{2})$/ =~ s
-      year1 = 2000 + year1.to_i
-      year2 = 2000 + year2.to_i
-      raise %{"#{year1}" and "#{year2}" are not consecutive years} unless year1 + 1 == year2
+    if /^(?<year1>\d{4})\/(?<year2>\d{2})$/ =~ s
+      year1 = year1.to_i
+      year1_century = year1 / 100
+      year2_century = year1 % 100 == 99 ? year1_century + 1 : year1_century
+      year2 = year2_century * 100 + year2.to_i
+      raise %{"#{year1}" and "#{year2}" are not consecutive years} unless year2 == year1 + 1
       return new(Date.parse "6 Apr #{year1}")
     end
 

@@ -1,5 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-require 'date'
 
 describe UkFinancialYear do
   describe "#first_day" do
@@ -90,6 +89,18 @@ describe UkFinancialYear do
       fy.last_day.should == Date.parse('5 Apr 2003')
     end
 
+    it "is 1998/99 for '1998/99'" do
+      fy = UkFinancialYear.from_s('1998/99')
+      fy.first_day.should == Date.parse('6 Apr 1998')
+      fy.last_day.should == Date.parse('5 Apr 1999')
+    end
+
+    it "is 1999/00 for '1999/00'" do
+      fy = UkFinancialYear.from_s('1999/00')
+      fy.first_day.should == Date.parse('6 Apr 1999')
+      fy.last_day.should == Date.parse('5 Apr 2000')
+    end
+
     it "raises error if years not consecutive" do
       expect {
         UkFinancialYear.from_s '2002/04'
@@ -105,14 +116,6 @@ describe UkFinancialYear do
       }.to raise_error(
         RuntimeError,
         /"20001\/02" does not match FY string format/
-      ) 
-    end
-
-    it "raises error on 20th century FY" do
-      expect {
-        UkFinancialYear.from_s '1998/99'
-      }.to raise_error(
-        RuntimeError
       ) 
     end
   end

@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "fyuk.gemspec",
     "lib/uk_financial_year.rb",
     "spec/spec_helper.rb",
     "spec/uk_financial_year_spec.rb"

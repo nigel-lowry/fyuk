@@ -1,6 +1,6 @@
 = fyuk
 
-Description goes here.
+Small Ruby gem for dealing with the UK financial year.
 
 == Contributing to fyuk
  

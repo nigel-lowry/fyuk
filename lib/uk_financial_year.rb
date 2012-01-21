@@ -17,6 +17,7 @@ class UkFinancialYear
   # @param [String] s the two years of the financial year in the form
   # of the first year as four digits, a '/', then the last year as
   # two digits
+  # @raise [RuntimeError] if the string cannot be parsed to a financial year
   # @return [UkFinancialYear] the financial year specified by the string
   def UkFinancialYear.from_s s
     if /^(?<year1>\d{4})\/(?<year2>\d{2})$/ =~ s

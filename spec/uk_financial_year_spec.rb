@@ -169,4 +169,12 @@ describe UkFinancialYear do
       UkFinancialYear.new(Date.parse '6 Apr 2011').should be > UkFinancialYear.new(Date.parse '5 Apr 2011')
     end
   end
+
+  describe "creation without date" do
+    it "is the current financial year" do
+      Timecop.freeze(Date.parse '5 Jul 2010') do
+        UkFinancialYear.new.should == UkFinancialYear.from_s('2010/11')
+      end
+    end
+  end
 end

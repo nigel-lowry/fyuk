@@ -6,9 +6,10 @@ class UkFinancialYear
 
   # creates a new UkFinancialYear as the financial year which
   # includes the given date
-  # @param [Date] date the date to create a financial year for
+  # @param [Date] date the date to create a financial year for. 
+  # If missing returns the current financial year
   # @return [UkFinancialYear] the financial year which covers the date
-  def initialize date
+  def initialize date=Date.today
     start_date = start_date date
     @range = start_date...start_date.next_year
   end

@@ -94,29 +94,20 @@ describe UkFinancialYear do
   end
 
   describe "#adjacent" do
-    it "is true for two consecutive financial years in date order" do
-      fy1 = UkFinancialYear.from_s '2011/12'
-      fy2 = UkFinancialYear.from_s '2012/13'
 
-      fy1.should be_adjacent fy2
-      fy2.should be_adjacent fy1
+    before :each do
+      @fy2011_12 = UkFinancialYear.from_s '2011/12'
+      @fy2012_13 = @fy2011_12.next
+      @fy2013_14 = @fy2012_13.next
+      @fy2013_15 = @fy2013_14.next
     end
 
-    it "is false for financial years which do not run together" do
-      fy1 = UkFinancialYear.from_s '2011/12'
-      fy2 = UkFinancialYear.from_s '2013/14'
+    subject { @fy2012_13 }
 
-      fy1.should_not be_adjacent fy2
-      fy2.should_not be_adjacent fy1
-    end
-
-    it "is false for the same financial year" do
-      fy1 = UkFinancialYear.from_s '2011/12'
-      fy2 = UkFinancialYear.from_s '2011/12'
-
-      fy1.should_not be_adjacent fy2
-      fy2.should_not be_adjacent fy1
-    end
+    it { should be_adjacent @fy2011_12 }
+    it { should be_adjacent @fy2013_14 }
+    it { should_not be_adjacent @fy2012_13 }
+    it { should_not be_adjacent @fy2013_15 }
   end
 
   describe "creation without date" do

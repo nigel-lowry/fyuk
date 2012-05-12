@@ -2,21 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe UkFinancialYear do
   describe "#first_day" do
-    it "is 6 Apr of the previous year if 4 Apr" do
-      UkFinancialYear.new(Date.parse '4 Apr 2011').first_day.should == Date.parse('6 Apr 2010')
-    end
-
-    it "is 6 Apr of the previous year if 5 Apr" do
-      UkFinancialYear.new(Date.parse '5 Apr 2011').first_day.should == Date.parse('6 Apr 2010')
-    end
-    
-    it "is 6 Apr for the same year if 6 Apr" do
-      UkFinancialYear.new(Date.parse '6 Apr 2011').first_day.should == Date.parse('6 Apr 2011')
-    end
-
-    it "is 6 Apr for the same year if 7 Apr" do
-      UkFinancialYear.new(Date.parse '7 Apr 2011').first_day.should == Date.parse('6 Apr 2011')
-    end
+    specify { UkFinancialYear.new(Date.parse '4 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
+    specify { UkFinancialYear.new(Date.parse '5 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
+    specify { UkFinancialYear.new(Date.parse '6 Apr 2011').first_day.should == Date.parse('6 Apr 2011') }
+    specify { UkFinancialYear.new(Date.parse '7 Apr 2011').first_day.should == Date.parse('6 Apr 2011') }
   end
 
   describe "#last_day" do

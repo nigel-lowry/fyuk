@@ -101,7 +101,7 @@ class UkFinancialYear
 
     def start_date date
       swap_date_that_year = Date.new date.year, 4, 6
-      date.after?(swap_date_that_year) ? swap_date_that_year : swap_date_that_year.prev_year
+      (date.after?(swap_date_that_year) or date == swap_date_that_year) ? swap_date_that_year : swap_date_that_year.prev_year
     end
 end
 
@@ -117,6 +117,6 @@ class Date
   end
 
   def after? other
-    self >= other # FIXME this is wrong
+    self > other
   end
 end

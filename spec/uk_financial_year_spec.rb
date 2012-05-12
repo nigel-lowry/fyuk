@@ -17,6 +17,9 @@ describe UkFinancialYear do
   specify { UkFinancialYear.new(Date.parse '6 Apr 2011').should == UkFinancialYear.new(Date.parse '7 Apr 2011') }
   specify { UkFinancialYear.new(Date.parse '5 Apr 2011').should_not == UkFinancialYear.new(Date.parse '6 Apr 2011') }
 
+  specify { UkFinancialYear.new(Date.parse('7 Apr 2011')).to_s.should == '2011/12' }
+  specify { UkFinancialYear.new(Date.parse('7 Apr 1999')).to_s.should == '1999/00' }
+
   describe "#first_day" do
     specify { UkFinancialYear.new(Date.parse '4 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
     specify { UkFinancialYear.new(Date.parse '5 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
@@ -42,11 +45,6 @@ describe UkFinancialYear do
     it { should include Date.parse '6 Apr 2012' }
     it { should include Date.parse '5 Apr 2013' }
     it { should_not include Date.parse '6 Apr 2013' } 
-  end
-  
-  describe "#to_s" do
-    specify { UkFinancialYear.new(Date.parse('7 Apr 2011')).to_s.should == '2011/12' }
-    specify { UkFinancialYear.new(Date.parse('7 Apr 1999')).to_s.should == '1999/00' }
   end
 
   describe "#from_s" do

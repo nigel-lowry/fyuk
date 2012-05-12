@@ -89,12 +89,18 @@ class UkFinancialYear
   private
     def start_date date
       swap_date_that_year = Date.new date.year, 4, 6
-      date >= swap_date_that_year ? swap_date_that_year : swap_date_that_year.prev_year
+      date.after?(swap_date_that_year) ? swap_date_that_year : swap_date_that_year.prev_year
     end
 end
 
 class String
   def last n
     self[-n, n]
+  end
+end
+
+class Date
+  def after? other
+    self >= other
   end
 end

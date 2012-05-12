@@ -73,7 +73,7 @@ class UkFinancialYear
   end
 
   def adjacent? other_financial_year
-    self.first_day.next_year == other_financial_year.first_day || self.first_day.prev_year == other_financial_year.first_day
+    self.first_day.next_year == other_financial_year.first_day or self.first_day.prev_year == other_financial_year.first_day
   end
 
   # equality method

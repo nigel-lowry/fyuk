@@ -89,7 +89,7 @@ describe UkFinancialYear do
     it { should_not be_adjacent @fy2012_13 }
   end
 
-  describe "#before?" do
+  describe "#before? and #after?" do
     before :each do
       @fy = UkFinancialYear.from_s '2011/12'
     end
@@ -97,6 +97,7 @@ describe UkFinancialYear do
     subject { @fy }
 
     it { should be_before UkFinancialYear.from_s('2012/13') }
+    it { should be_after UkFinancialYear.from_s('2010/11') }
   end
 
   describe "creation without date" do

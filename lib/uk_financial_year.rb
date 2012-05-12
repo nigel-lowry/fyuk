@@ -80,6 +80,10 @@ class UkFinancialYear
     self.first_day.before?(other.first_day)
   end
 
+  def after? other
+    self.first_day.after?(other.first_day)
+  end
+
   # equality method
   def == other
     self.first_day == other.first_day

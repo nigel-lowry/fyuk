@@ -106,8 +106,8 @@ describe UkFinancialYear do
 
     it { should be_adjacent @fy2011_12 }
     it { should be_adjacent @fy2013_14 }
-    it { should_not be_adjacent @fy2012_13 }
     it { should_not be_adjacent @fy2013_15 }
+    it { should_not be_adjacent @fy2012_13 }
   end
 
   describe "creation without date" do

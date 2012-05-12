@@ -9,21 +9,10 @@ describe UkFinancialYear do
   end
 
   describe "#last_day" do
-    it "is 5 Apr of the current year if 4 Apr" do
-      UkFinancialYear.new(Date.parse '4 Apr 2011').last_day.should == Date.parse('5 Apr 2011')
-    end
-
-    it "is 5 Apr of the current year if 5 Apr" do
-      UkFinancialYear.new(Date.parse '5 Apr 2011').last_day.should == Date.parse('5 Apr 2011')
-    end
-
-    it "is 5 Apr next year if 6 Apr" do
-      UkFinancialYear.new(Date.parse '6 Apr 2011').last_day.should == Date.parse('5 Apr 2012')
-    end
-
-    it "is 5 Apr next year if 7 Apr" do
-      UkFinancialYear.new(Date.parse '7 Apr 2011').last_day.should == Date.parse('5 Apr 2012')
-    end
+    specify { UkFinancialYear.new(Date.parse '4 Apr 2011').last_day.should == Date.parse('5 Apr 2011') }
+    specify { UkFinancialYear.new(Date.parse '5 Apr 2011').last_day.should == Date.parse('5 Apr 2011') }
+    specify { UkFinancialYear.new(Date.parse '6 Apr 2011').last_day.should == Date.parse('5 Apr 2012') }
+    specify { UkFinancialYear.new(Date.parse '7 Apr 2011').last_day.should == Date.parse('5 Apr 2012') }
   end
 
   describe "#.include?" do

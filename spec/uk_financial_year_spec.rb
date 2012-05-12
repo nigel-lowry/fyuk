@@ -96,10 +96,7 @@ describe UkFinancialYear do
   end 
 
   describe "#previous" do
-    it "returns the previous financial year" do
-      fy = UkFinancialYear.from_s '2011/12'
-      fy.previous.should == UkFinancialYear.from_s('2010/11')
-    end
+    specify { UkFinancialYear.from_s('2011/12').previous.should == UkFinancialYear.from_s('2010/11') }
   end 
 
   describe "#adjacent" do

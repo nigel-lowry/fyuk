@@ -1,6 +1,19 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe UkFinancialYear do
+
+  before :all do
+    @fy = UkFinancialYear.from_s '2012/13'
+  end
+
+  subject { @fy }
+
+  its(:first_day) { should == Date.parse('6 Apr 2012') }
+  its(:last_day) { should == Date.parse('5 Apr 2013') }
+  its(:next) { should == UkFinancialYear.from_s('2013/14') }
+  its(:previous) { should == UkFinancialYear.from_s('2011/12') }
+  its(:to_s) { should == '2012/13' }
+
   describe "#first_day" do
     specify { UkFinancialYear.new(Date.parse '4 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
     specify { UkFinancialYear.new(Date.parse '5 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
@@ -90,14 +103,6 @@ describe UkFinancialYear do
       ) 
     end
   end
-
-  describe "#next" do
-    specify { UkFinancialYear.from_s('2011/12').next.should == UkFinancialYear.from_s('2012/13') }
-  end 
-
-  describe "#previous" do
-    specify { UkFinancialYear.from_s('2011/12').previous.should == UkFinancialYear.from_s('2010/11') }
-  end 
 
   describe "#adjacent" do
     it "is true for two consecutive financial years in date order" do

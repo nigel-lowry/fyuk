@@ -50,29 +50,9 @@ describe UkFinancialYear do
   end
 
   describe "#from_s" do
-    it "is 2010/11 for '2010/11'" do
-      fy = UkFinancialYear.from_s '2010/11'
-      fy.first_day.should == Date.parse('6 Apr 2010')
-      fy.last_day.should == Date.parse('5 Apr 2011')
-    end
-
-    it "is 2002/03 for '2002/03'" do
-      fy = UkFinancialYear.from_s '2002/03'
-      fy.first_day.should == Date.parse('6 Apr 2002')
-      fy.last_day.should == Date.parse('5 Apr 2003')
-    end
-
-    it "is 1998/99 for '1998/99'" do
-      fy = UkFinancialYear.from_s '1998/99'
-      fy.first_day.should == Date.parse('6 Apr 1998')
-      fy.last_day.should == Date.parse('5 Apr 1999')
-    end
-
-    it "is 1999/00 for '1999/00'" do
-      fy = UkFinancialYear.from_s '1999/00'
-      fy.first_day.should == Date.parse('6 Apr 1999')
-      fy.last_day.should == Date.parse('5 Apr 2000')
-    end
+    specify { UkFinancialYear.from_s('1998/99').to_s.should == '1998/99' }
+    specify { UkFinancialYear.from_s('1999/00').to_s.should == '1999/00' }
+    specify { UkFinancialYear.from_s('2000/01').to_s.should == '2000/01' }
 
     it "raises error if years not consecutive" do
       expect {

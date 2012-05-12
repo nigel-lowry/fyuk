@@ -14,6 +14,9 @@ describe UkFinancialYear do
   its(:previous) { should == UkFinancialYear.from_s('2011/12') }
   its(:to_s) { should == '2012/13' }
 
+  specify { UkFinancialYear.new(Date.parse '6 Apr 2011').should == UkFinancialYear.new(Date.parse '7 Apr 2011') }
+  specify { UkFinancialYear.new(Date.parse '5 Apr 2011').should_not == UkFinancialYear.new(Date.parse '6 Apr 2011') }
+
   describe "#first_day" do
     specify { UkFinancialYear.new(Date.parse '4 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
     specify { UkFinancialYear.new(Date.parse '5 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
@@ -39,20 +42,6 @@ describe UkFinancialYear do
     it { should include Date.parse '6 Apr 2012' }
     it { should include Date.parse '5 Apr 2013' }
     it { should_not include Date.parse '6 Apr 2013' } 
-  end
-
-  describe "equality" do
-    it "is the same for values falling in the same FY" do
-      fy1 = UkFinancialYear.new(Date.parse '6 Apr 2011')
-      fy2 = UkFinancialYear.new(Date.parse '7 Apr 2011')
-      fy1.should == fy2
-    end
-
-    it "is different for values in different FYs" do
-      fy1 = UkFinancialYear.new(Date.parse '5 Apr 2011')
-      fy2 = UkFinancialYear.new(Date.parse '6 Apr 2011')
-      fy1.should_not == fy2
-    end   
   end
   
   describe "#to_s" do

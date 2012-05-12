@@ -19,7 +19,7 @@ class UkFinancialYear
   # @return [String] representation in the form of the first year as four
   # digits, a '/', then the last year as two digits
   def to_s
-    "#{self.first_day.year}/#{self.last_day.year.to_s[-2..-1]}"
+    "#{self.first_day.year}/#{self.last_day.year.to_s.last(2)}"
   end
 
   # creates a new UkFinancialYear from a string in the form '2000/01'
@@ -91,4 +91,10 @@ class UkFinancialYear
       swap_date_that_year = Date.new date.year, 4, 6
       date >= swap_date_that_year ? swap_date_that_year : swap_date_that_year.prev_year
     end
+end
+
+class String
+  def last n
+    self[-n, n]
+  end
 end

@@ -76,12 +76,18 @@ class UkFinancialYear
     self.first_day.next_year == other_financial_year.first_day or self.first_day.prev_year == other_financial_year.first_day
   end
 
-  def before? other
-    self.first_day.before?(date_to_compare other)
+  # tells if the given date or financial year is before this one
+  # @param [Date] date_or_fy date or financial year to check
+  # @return [Boolean] to indicate if this financial year is before
+  def before? date_or_fy
+    self.first_day.before?(date_to_compare date_or_fy)
   end
 
-  def after? other
-    self.first_day.after?(date_to_compare other)
+  # tells if the given date or financial year is after this one
+  # @param (see FixedOdds#before?)
+  # @return [Boolean] to indicate if this financial year is after
+  def after? date_or_fy
+    self.first_day.after?(date_to_compare date_or_fy)
   end
 
   # equality method

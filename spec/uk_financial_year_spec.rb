@@ -43,15 +43,8 @@ describe UkFinancialYear do
   end
   
   describe "#to_s" do
-    it "is the four-digit year then a '/' then a two-digit year" do
-      fy = UkFinancialYear.new Date.parse '7 Apr 2011'
-      fy.to_s.should == '2011/12'
-    end
-
-    it "is 1999/00 for the turn of the millenium" do
-      fy = UkFinancialYear.new Date.parse '7 Apr 1999'
-      fy.to_s.should == '1999/00'
-    end
+    specify { UkFinancialYear.new(Date.parse('7 Apr 2011')).to_s.should == '2011/12' }
+    specify { UkFinancialYear.new(Date.parse('7 Apr 1999')).to_s.should == '1999/00' }
   end
 
   describe "#from_s" do

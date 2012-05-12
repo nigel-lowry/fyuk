@@ -17,6 +17,8 @@ describe UkFinancialYear do
   specify { UkFinancialYear.new(Date.parse '6 Apr 2011').should == UkFinancialYear.new(Date.parse '7 Apr 2011') }
   specify { UkFinancialYear.new(Date.parse '5 Apr 2011').should_not == UkFinancialYear.new(Date.parse '6 Apr 2011') }
 
+  specify { UkFinancialYear.new(Date.parse '5 Apr 2011').should be < UkFinancialYear.new(Date.parse '6 Apr 2011') }
+
   specify { UkFinancialYear.new(Date.parse('7 Apr 2011')).to_s.should == '2011/12' }
   specify { UkFinancialYear.new(Date.parse('7 Apr 1999')).to_s.should == '1999/00' }
 
@@ -114,16 +116,6 @@ describe UkFinancialYear do
 
       fy1.should_not be_adjacent fy2
       fy2.should_not be_adjacent fy1
-    end
-  end
-
-  describe "object comparison" do
-    it "is less than for earlier FYs" do
-      UkFinancialYear.new(Date.parse '5 Apr 2011').should be < UkFinancialYear.new(Date.parse '6 Apr 2011')
-    end
-
-    it "is greater than for later FYs" do
-      UkFinancialYear.new(Date.parse '6 Apr 2011').should be > UkFinancialYear.new(Date.parse '5 Apr 2011')
     end
   end
 

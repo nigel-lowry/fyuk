@@ -77,11 +77,11 @@ class UkFinancialYear
   end
 
   def before? other
-    self.first_day.before?(other.first_day)
+    self.first_day.before?(date_to_compare other)
   end
 
   def after? other
-    self.first_day.after?(other.first_day)
+    self.first_day.after?(date_to_compare other)
   end
 
   # equality method
@@ -95,6 +95,10 @@ class UkFinancialYear
   end
 
   private
+    def date_to_compare other
+      if other.is_a?(Date) then other else other.first_day end
+    end
+
     def start_date date
       swap_date_that_year = Date.new date.year, 4, 6
       date.after?(swap_date_that_year) ? swap_date_that_year : swap_date_that_year.prev_year

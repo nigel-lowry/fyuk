@@ -98,6 +98,8 @@ describe UkFinancialYear do
 
     it { should be_before UkFinancialYear.from_s('2012/13') }
     it { should be_after UkFinancialYear.from_s('2010/11') }
+    it { should be_before UkFinancialYear.from_s('2012/13').last_day }
+    it { should be_after UkFinancialYear.from_s('2010/11').first_day }
   end
 
   describe "creation without date" do

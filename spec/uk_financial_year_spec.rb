@@ -74,7 +74,6 @@ describe UkFinancialYear do
   end
 
   describe "#adjacent" do
-
     before :each do
       @fy2011_12 = UkFinancialYear.from_s '2011/12'
       @fy2012_13 = @fy2011_12.next

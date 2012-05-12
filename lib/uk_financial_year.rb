@@ -77,12 +77,12 @@ class UkFinancialYear
   end
 
   # equality method
-  def ==(other)
+  def == other
     self.first_day == other.first_day
   end
 
   # lesser financial years are those which occur earliest
-  def <=>(other)
+  def <=> other
     self.first_day <=> other.first_day
   end
 

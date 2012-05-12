@@ -89,6 +89,16 @@ describe UkFinancialYear do
     it { should_not be_adjacent @fy2012_13 }
   end
 
+  describe "#before?" do
+    before :each do
+      @fy = UkFinancialYear.from_s '2011/12'
+    end
+
+    subject { @fy }
+
+    it { should be_before UkFinancialYear.from_s('2012/13') }
+  end
+
   describe "creation without date" do
     it "is the current financial year" do
       Timecop.freeze(Date.parse '5 Jul 2010') do

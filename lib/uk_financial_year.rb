@@ -76,6 +76,10 @@ class UkFinancialYear
     self.first_day.next_year == other_financial_year.first_day or self.first_day.prev_year == other_financial_year.first_day
   end
 
+  def before? other
+    self.first_day.before?(other.first_day)
+  end
+
   # equality method
   def == other
     self.first_day == other.first_day
@@ -100,7 +104,11 @@ class String
 end
 
 class Date
+  def before? other
+    self < other
+  end
+
   def after? other
-    self >= other
+    self >= other # FIXME this is wrong
   end
 end

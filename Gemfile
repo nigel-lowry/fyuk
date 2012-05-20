@@ -16,3 +16,7 @@ end
 group :test do
   gem 'timecop'
 end
+
+group :development, :test do
+  gem 'debugger'
+end

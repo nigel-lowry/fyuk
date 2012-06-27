@@ -90,6 +90,13 @@ class UkFinancialYear
     self.first_day.after?(date_to_compare date_or_fy)
   end
 
+  def period_before date
+    raise "#{date} is before FY #{to_s}" if date < first_day
+    raise "#{date} is after FY #{to_s}" if date > last_day
+
+    first_day...date
+  end
+
   # equality method
   def == other
     self.first_day == other.first_day

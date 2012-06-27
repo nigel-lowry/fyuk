@@ -90,6 +90,10 @@ class UkFinancialYear
     self.first_day.after?(date_to_compare date_or_fy)
   end
 
+  # returns the period before this date in the financial year
+  # @param [Date] date a date in the financial year
+  # @return [Range<Date>] the period before this date in the the
+  # financial year 
   def period_before date
     raise "#{date} is before FY #{to_s}" if date < first_day
     raise "#{date} is after FY #{to_s}" if date > last_day

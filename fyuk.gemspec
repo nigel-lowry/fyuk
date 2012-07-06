@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nigel Lowry"]
-  s.date = "2012-07-05"
-  s.description = "Small library with methods for finding the financial or fiscal year for a particular date and suchlike. Used by Milog https://milog-lemmata.herokuapp.com/"
+  s.date = "2012-07-06"
+  s.description = "Small library with methods for finding the financial or fiscal year for a particular date and suchlike. Used by Hubo https://hubo.herokuapp.com/"
   s.email = "nigel-lowry@ultra.eclipse.co.uk"
   s.extra_rdoc_files = [
     "LICENSE.txt",

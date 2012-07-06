@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/nigel-lowry/fyuk"
   gem.license = "MIT"
   gem.summary = %Q{Small Ruby gem for dealing with dates in the UK financial year}
-  gem.description = %Q{Small library with methods for finding the financial or fiscal year for a particular date and suchlike. Used by Milog https://milog-lemmata.herokuapp.com/}
+  gem.description = %Q{Small library with methods for finding the financial or fiscal year for a particular date and suchlike. Used by Hubo https://hubo.herokuapp.com/}
   gem.email = "nigel-lowry@ultra.eclipse.co.uk"
   gem.authors = ["Nigel Lowry"]
   # dependencies defined in Gemfile

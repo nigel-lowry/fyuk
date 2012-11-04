@@ -85,7 +85,7 @@ class UkFinancialYear
   end
 
   # tells if the given date or financial year is after this one
-  # @param (see FixedOdds#before?)
+  # @param (see UkFinancialYear#before?)
   # @return [Boolean] to indicate if this financial year is after
   def after? date_or_fy
     self.first_day > date_to_compare(date_or_fy)

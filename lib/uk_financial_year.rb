@@ -116,7 +116,7 @@ class UkFinancialYear
 
     def start_date date
       swap_date_that_year = date.change day: 6, month: 4
-      date >= swap_date_that_year ? swap_date_that_year : swap_date_that_year.prev_year
+      date < swap_date_that_year ? swap_date_that_year.prev_year : swap_date_that_year
     end
 
     def date_to_compare other

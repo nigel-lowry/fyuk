@@ -74,7 +74,7 @@ class UkFinancialYear
   end
 
   def adjacent? other_financial_year
-    self.first_day.next_year == other_financial_year.first_day or self.first_day.prev_year == other_financial_year.first_day
+    other_financial_year.last_day.tomorrow == self.first_day or other_financial_year.first_day.yesterday == self.last_day
   end
 
   # tells if the given date or financial year is before this one

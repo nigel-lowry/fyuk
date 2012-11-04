@@ -80,14 +80,14 @@ class UkFinancialYear
   # @param [Date] date_or_fy date or financial year to check
   # @return [Boolean] to indicate if this financial year is before
   def before? date_or_fy
-    self.first_day.before?(date_to_compare date_or_fy)
+    self.first_day < date_to_compare(date_or_fy)
   end
 
   # tells if the given date or financial year is after this one
   # @param (see FixedOdds#before?)
   # @return [Boolean] to indicate if this financial year is after
   def after? date_or_fy
-    self.first_day.after?(date_to_compare date_or_fy)
+    self.first_day > date_to_compare(date_or_fy)
   end
 
   # returns the period before this date in the financial year
@@ -95,8 +95,8 @@ class UkFinancialYear
   # @return [Range<Date>] the period before this date in the the
   # financial year 
   def period_before date
-    raise "#{date} is before FY #{to_s}" if date.before? first_day
-    raise "#{date} is after FY #{to_s}" if date.after? last_day
+    raise "#{date} is before FY #{to_s}" if date < first_day
+    raise "#{date} is after FY #{to_s}" if date > last_day
 
     first_day...date
   end
@@ -115,21 +115,11 @@ class UkFinancialYear
 
     def start_date date
       swap_date_that_year = Date.new date.year, 4, 6
-      (date.after?(swap_date_that_year) or date == swap_date_that_year) ? swap_date_that_year : swap_date_that_year.prev_year
+      date >= swap_date_that_year ? swap_date_that_year : swap_date_that_year.prev_year
     end
 
     def date_to_compare other
       if other.is_a?(Date) then other else other.first_day end
     end
 
-end
-
-class Date
-  def before? other
-    self < other
-  end
-
-  def after? other
-    self > other
-  end
 end

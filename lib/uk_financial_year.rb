@@ -1,4 +1,5 @@
 require 'date'
+require 'active_support/all'
 
 # Makes working with the UK financial or fiscal year easier.
 class UkFinancialYear
@@ -19,7 +20,7 @@ class UkFinancialYear
   # @return [String] representation in the form of the first year as four
   # digits, a '/', then the last year as two digits
   def to_s
-    "#{first_day.year}/#{last_day.year.to_s[-2..-1]}"
+    "#{first_day.year}/#{last_day.year.to_s.from 2}"
   end
 
   # creates a new UkFinancialYear from a string in the form '2000/01'

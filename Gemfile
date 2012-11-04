@@ -22,3 +22,4 @@ group :development, :test do
 end
 
 gem 'activesupport'
+gem 'i18n'

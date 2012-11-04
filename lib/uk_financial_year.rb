@@ -120,7 +120,7 @@ class UkFinancialYear
     end
 
     def date_to_compare other
-      if other.is_a?(Date) then other else other.first_day end
+      other.is_a?(Date) ? other : other.first_day
     end
 
 end

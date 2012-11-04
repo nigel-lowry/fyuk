@@ -50,6 +50,7 @@ describe UkFinancialYear do
   end
 
   describe "#from_s" do
+    specify { UkFinancialYear.from_s('1997/98').to_s.should == '1997/98' }
     specify { UkFinancialYear.from_s('1998/99').to_s.should == '1998/99' }
     specify { UkFinancialYear.from_s('1999/00').to_s.should == '1999/00' }
     specify { UkFinancialYear.from_s('2000/01').to_s.should == '2000/01' }

@@ -112,14 +112,16 @@ class UkFinancialYear
   end
 
   private
-    def date_to_compare other
-      if other.is_a?(Date) then other else other.first_day end
-    end
 
     def start_date date
       swap_date_that_year = Date.new date.year, 4, 6
       (date.after?(swap_date_that_year) or date == swap_date_that_year) ? swap_date_that_year : swap_date_that_year.prev_year
     end
+
+    def date_to_compare other
+      if other.is_a?(Date) then other else other.first_day end
+    end
+
 end
 
 class Date

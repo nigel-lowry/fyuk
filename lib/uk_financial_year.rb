@@ -35,7 +35,7 @@ class UkFinancialYear
       year1_century = year1 / 100
       year2_century = year1 % 100 == 99 ? year1_century + 1 : year1_century
       year2 = year2_century * 100 + year2.to_i
-      raise %{"#{year1}" and "#{year2}" are not consecutive years} unless year2 == year1 + 1
+      raise %{"#{year1}" and "#{year2}" are not consecutive years} unless year1 + 1 == year2
       return new(Date.new year1, 4, 6)
     end
 

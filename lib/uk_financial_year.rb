@@ -1,4 +1,3 @@
-require 'date'
 require 'active_support/all'
 
 # Makes working with the UK financial or fiscal year easier.

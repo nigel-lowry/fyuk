@@ -30,16 +30,8 @@ class UkFinancialYear
   # @raise [RuntimeError] if the string cannot be parsed to a financial year
   # @return [UkFinancialYear] the financial year specified by the string
   def UkFinancialYear.from_s s
-    if /^(?<year1>\d{4})\/(?<year2>\d{2})$/ =~ s
-      year1 = year1.to_i
-      year1_century = year1 / 100
-      year2_century = year1 % 100 == 99 ? year1_century + 1 : year1_century
-      year2 = year2_century * 100 + year2.to_i
-      raise %{"#{year1}" and "#{year2}" are not consecutive years} unless year1 + 1 == year2
-      return new(Date.new year1, 4, 6)
-    end
-
-    raise %{"#{s}" does not match FY string format}
+    check_format s
+    new(Date.new s.to(3).to_i, 4, 6)
   end
 
   # returns the date of the first day of the financial year
@@ -117,6 +109,18 @@ class UkFinancialYear
     def start_date date
       swap_date_that_year = date.change day: 6, month: 4
       date < swap_date_that_year ? swap_date_that_year.prev_year : swap_date_that_year
+    end
+
+    def self.check_format s
+      if /^(?<year1>\d{4})\/(?<year2>\d{2})$/ =~ s
+        year1 = year1.to_i
+        year1_century = year1 / 100
+        year2_century = year1 % 100 == 99 ? year1_century + 1 : year1_century
+        year2 = year2_century * 100 + year2.to_i
+        raise %{"#{year1}" and "#{year2}" are not consecutive years} unless year1 + 1 == year2
+      else
+        raise %{"#{s}" does not match FY string format}
+      end
     end
 
     def date_to_compare other

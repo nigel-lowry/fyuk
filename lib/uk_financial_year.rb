@@ -99,8 +99,8 @@ class UkFinancialYear
   # @return [Range<Date>] the period before this date in the the
   # financial year 
   def period_before date
-    raise "#{date} is before FY #{to_s}" if date < first_day
-    raise "#{date} is after FY #{to_s}" if date > last_day
+    raise "#{date} is before FY #{to_s} which starts on #{first_day}" if date < first_day
+    raise "#{date} is after FY #{to_s} which ends on #{last_day}" if date > last_day
 
     first_day...date
   end

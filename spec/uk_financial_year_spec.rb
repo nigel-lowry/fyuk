@@ -136,8 +136,8 @@ describe UkFinancialYear do
       )
     end
 
-    specify { @fy.period_before(Date.parse '6 Apr 2012').should == (Date.parse('6 Apr 2012')...Date.parse('6 Apr 2012')) }
-    specify { @fy.period_before(Date.parse '7 Apr 2012').should == (Date.parse('6 Apr 2012')...Date.parse('7 Apr 2012')) }
-    specify { @fy.period_before(Date.parse '8 Apr 2012').should == (Date.parse('6 Apr 2012')...Date.parse('8 Apr 2012')) }
+    specify { @fy.period_before('6 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'6 Apr 2012'.to_date) }
+    specify { @fy.period_before('7 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'7 Apr 2012'.to_date) }
+    specify { @fy.period_before('8 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'8 Apr 2012'.to_date) }
   end
 end

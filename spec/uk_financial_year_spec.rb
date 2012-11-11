@@ -120,7 +120,7 @@ describe UkFinancialYear do
 
     it "raises an error for a date before the FY" do
       expect {
-        @fy.period_before(Date.parse '5 Apr 2012')
+        @fy.period_before('5 Apr 2012'.to_date)
       }.to raise_error(
         RuntimeError,
         /2012-04-05 is before FY 2012\/13/
@@ -129,7 +129,7 @@ describe UkFinancialYear do
 
     it "raises an error for a date after the FY" do
       expect {
-        @fy.period_before(Date.parse '6 Apr 2013')
+        @fy.period_before('6 Apr 2013'.to_date)
       }.to raise_error(
         RuntimeError,
         /2013-04-06 is after FY 2012\/13/

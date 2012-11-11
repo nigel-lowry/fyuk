@@ -8,32 +8,32 @@ describe UkFinancialYear do
 
   subject { @fy }
 
-  its(:first_day) { should == Date.parse('6 Apr 2012') }
-  its(:last_day) { should == Date.parse('5 Apr 2013') }
+  its(:first_day) { should == '6 Apr 2012'.to_date }
+  its(:last_day) { should == '5 Apr 2013'.to_date }
   its(:next) { should == UkFinancialYear.from_s('2013/14') }
   its(:previous) { should == UkFinancialYear.from_s('2011/12') }
   its(:to_s) { should == '2012/13' }
 
-  specify { UkFinancialYear.new(Date.parse '6 Apr 2011').should == UkFinancialYear.new(Date.parse '7 Apr 2011') }
-  specify { UkFinancialYear.new(Date.parse '5 Apr 2011').should_not == UkFinancialYear.new(Date.parse '6 Apr 2011') }
+  specify { UkFinancialYear.new('6 Apr 2011'.to_date).should == UkFinancialYear.new('7 Apr 2011'.to_date) }
+  specify { UkFinancialYear.new('5 Apr 2011'.to_date).should_not == UkFinancialYear.new('6 Apr 2011'.to_date) }
 
-  specify { UkFinancialYear.new(Date.parse '5 Apr 2011').should be < UkFinancialYear.new(Date.parse '6 Apr 2011') }
+  specify { UkFinancialYear.new('5 Apr 2011'.to_date).should be < UkFinancialYear.new('6 Apr 2011'.to_date) }
 
-  specify { UkFinancialYear.new(Date.parse('7 Apr 2011')).to_s.should == '2011/12' }
-  specify { UkFinancialYear.new(Date.parse('7 Apr 1999')).to_s.should == '1999/00' }
+  specify { UkFinancialYear.new('7 Apr 2011'.to_date).to_s.should == '2011/12' }
+  specify { UkFinancialYear.new('7 Apr 1999'.to_date).to_s.should == '1999/00' }
 
   describe "#first_day" do
-    specify { UkFinancialYear.new(Date.parse '4 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
-    specify { UkFinancialYear.new(Date.parse '5 Apr 2011').first_day.should == Date.parse('6 Apr 2010') }
-    specify { UkFinancialYear.new(Date.parse '6 Apr 2011').first_day.should == Date.parse('6 Apr 2011') }
-    specify { UkFinancialYear.new(Date.parse '7 Apr 2011').first_day.should == Date.parse('6 Apr 2011') }
+    specify { UkFinancialYear.new('4 Apr 2011'.to_date).first_day.should == '6 Apr 2010'.to_date }
+    specify { UkFinancialYear.new('5 Apr 2011'.to_date).first_day.should == '6 Apr 2010'.to_date }
+    specify { UkFinancialYear.new('6 Apr 2011'.to_date).first_day.should == '6 Apr 2011'.to_date }
+    specify { UkFinancialYear.new('7 Apr 2011'.to_date).first_day.should == '6 Apr 2011'.to_date }
   end
 
   describe "#last_day" do
-    specify { UkFinancialYear.new(Date.parse '4 Apr 2011').last_day.should == Date.parse('5 Apr 2011') }
-    specify { UkFinancialYear.new(Date.parse '5 Apr 2011').last_day.should == Date.parse('5 Apr 2011') }
-    specify { UkFinancialYear.new(Date.parse '6 Apr 2011').last_day.should == Date.parse('5 Apr 2012') }
-    specify { UkFinancialYear.new(Date.parse '7 Apr 2011').last_day.should == Date.parse('5 Apr 2012') }
+    specify { UkFinancialYear.new('4 Apr 2011'.to_date).last_day.should == '5 Apr 2011'.to_date }
+    specify { UkFinancialYear.new('5 Apr 2011'.to_date).last_day.should == '5 Apr 2011'.to_date }
+    specify { UkFinancialYear.new('6 Apr 2011'.to_date).last_day.should == '5 Apr 2012'.to_date }
+    specify { UkFinancialYear.new('7 Apr 2011'.to_date).last_day.should == '5 Apr 2012'.to_date }
   end
 
   describe "#.include?" do
@@ -43,10 +43,10 @@ describe UkFinancialYear do
 
     subject { @fy }
 
-    it { should_not include Date.parse '5 Apr 2012' }
-    it { should include Date.parse '6 Apr 2012' }
-    it { should include Date.parse '5 Apr 2013' }
-    it { should_not include Date.parse '6 Apr 2013' } 
+    it { should_not include '5 Apr 2012'.to_date }
+    it { should include '6 Apr 2012'.to_date }
+    it { should include '5 Apr 2013'.to_date }
+    it { should_not include '6 Apr 2013'.to_date } 
   end
 
   describe "#from_s" do

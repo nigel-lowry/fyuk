@@ -71,14 +71,14 @@ describe UkFinancialYear do
       @fy2011_12 = UkFinancialYear.from_s '2011/12'
       @fy2012_13 = @fy2011_12.next
       @fy2013_14 = @fy2012_13.next
-      @fy2013_15 = @fy2013_14.next
+      @fy2014_15 = @fy2013_14.next
     end
 
     subject { @fy2012_13 }
 
     it { should be_adjacent @fy2011_12 }
     it { should be_adjacent @fy2013_14 }
-    it { should_not be_adjacent @fy2013_15 }
+    it { should_not be_adjacent @fy2014_15 }
     it { should_not be_adjacent @fy2012_13 }
   end
 

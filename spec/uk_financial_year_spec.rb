@@ -67,19 +67,12 @@ describe UkFinancialYear do
   end
 
   describe "#adjacent" do
-    before :each do
-      @fy2011_12 = UkFinancialYear.from_s '2011/12'
-      @fy2012_13 = @fy2011_12.next
-      @fy2013_14 = @fy2012_13.next
-      @fy2014_15 = @fy2013_14.next
-    end
+    subject { UkFinancialYear.from_s '2011/12' }
 
-    subject { @fy2012_13 }
-
-    it { should be_adjacent @fy2011_12 }
-    it { should be_adjacent @fy2013_14 }
-    it { should_not be_adjacent @fy2014_15 }
-    it { should_not be_adjacent @fy2012_13 }
+    it { should_not be_adjacent UkFinancialYear.from_s '2009/10' }
+    it { should be_adjacent UkFinancialYear.from_s '2010/11' }
+    it { should be_adjacent UkFinancialYear.from_s '2012/13' }
+    it { should_not be_adjacent UkFinancialYear.from_s '2013/14' }
   end
 
   describe "#before? and #after?" do

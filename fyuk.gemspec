@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "fyuk"
-  s.version = "0.6.7"
+  s.version = "0.6.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nigel Lowry"]
-  s.date = "2012-11-11"
+  s.date = "2013-08-15"
   s.description = "Small library with methods for finding the financial or fiscal year for a particular date and suchlike. Used by Hubo https://hubo.herokuapp.com/"
   s.email = "nigel-lowry@ultra.eclipse.co.uk"
   s.extra_rdoc_files = [

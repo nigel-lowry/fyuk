@@ -2,11 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe UkFinancialYear do
 
-  before :all do
-    @fy = UkFinancialYear.from_s '2012/13'
-  end
-
-  subject { @fy }
+  subject { UkFinancialYear.from_s '2012/13' }
 
   its(:first_day) { should == '6 Apr 2012'.to_date }
   its(:last_day) { should == '5 Apr 2013'.to_date }
@@ -37,11 +33,7 @@ describe UkFinancialYear do
   end
 
   describe "#.include?" do
-    before :each do
-      @fy = UkFinancialYear.from_s '2012/13'
-    end
-
-    subject { @fy }
+    subject { UkFinancialYear.from_s '2012/13' }
 
     it { should_not include '5 Apr 2012'.to_date }
     it { should include '6 Apr 2012'.to_date }

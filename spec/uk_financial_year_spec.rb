@@ -76,16 +76,12 @@ describe UkFinancialYear do
   end
 
   describe "#before? and #after?" do
-    before :each do
-      @fy = UkFinancialYear.from_s '2011/12'
-    end
-
-    subject { @fy }
+    subject { UkFinancialYear.from_s '2011/12' }
 
     it { should be_before UkFinancialYear.from_s('2012/13') }
+    it { should be_before UkFinancialYear.from_s('2012/13').first_day }
     it { should be_after UkFinancialYear.from_s('2010/11') }
-    it { should be_before UkFinancialYear.from_s('2012/13').last_day }
-    it { should be_after UkFinancialYear.from_s('2010/11').first_day }
+    it { should be_after UkFinancialYear.from_s('2010/11').last_day }
   end
 
   describe "creation without date" do

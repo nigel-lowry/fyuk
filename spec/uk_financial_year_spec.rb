@@ -93,15 +93,11 @@ describe UkFinancialYear do
   end
 
   describe "#fy_before" do
-    before :each do
-      @fy = UkFinancialYear.from_s '2012/13'
-    end
-
-    subject { @fy }
+    subject { UkFinancialYear.from_s '2012/13' }
 
     it "raises an error for a date before the FY" do
       expect {
-        @fy.period_before('5 Apr 2012'.to_date)
+        subject.period_before('5 Apr 2012'.to_date)
       }.to raise_error(
         RuntimeError,
         /2012-04-05 is before FY 2012\/13/
@@ -110,15 +106,15 @@ describe UkFinancialYear do
 
     it "raises an error for a date after the FY" do
       expect {
-        @fy.period_before('6 Apr 2013'.to_date)
+        subject.period_before('6 Apr 2013'.to_date)
       }.to raise_error(
         RuntimeError,
         /2013-04-06 is after FY 2012\/13/
       )
     end
 
-    specify { @fy.period_before('6 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'6 Apr 2012'.to_date) }
-    specify { @fy.period_before('7 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'7 Apr 2012'.to_date) }
-    specify { @fy.period_before('8 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'8 Apr 2012'.to_date) }
+    specify { subject.period_before('6 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'6 Apr 2012'.to_date) }
+    specify { subject.period_before('7 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'7 Apr 2012'.to_date) }
+    specify { subject.period_before('8 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'8 Apr 2012'.to_date) }
   end
 end

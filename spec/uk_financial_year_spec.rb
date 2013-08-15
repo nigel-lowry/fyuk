@@ -15,8 +15,10 @@ describe UkFinancialYear do
 
   specify { UkFinancialYear.new('5 Apr 2011'.to_date).should be < UkFinancialYear.new('6 Apr 2011'.to_date) }
 
-  specify { UkFinancialYear.new('7 Apr 2011'.to_date).to_s.should == '2011/12' }
-  specify { UkFinancialYear.new('7 Apr 1999'.to_date).to_s.should == '1999/00' }
+  describe "#to_s" do
+    specify { UkFinancialYear.new('7 Apr 2011'.to_date).to_s.should == '2011/12' }
+    specify { UkFinancialYear.new('7 Apr 1999'.to_date).to_s.should == '1999/00' }
+  end
 
   describe "#first_day" do
     specify { UkFinancialYear.new('4 Apr 2011'.to_date).first_day.should == '6 Apr 2010'.to_date }

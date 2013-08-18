@@ -39,6 +39,7 @@ DEPENDENCIES
   debugger
   i18n
   jeweler (~> 1.6.4)
+  rake
   rcov
   rspec (~> 2.9.0)
   timecop

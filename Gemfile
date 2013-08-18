@@ -15,9 +15,10 @@ end
 
 group :test do
   gem 'timecop'
+  gem 'rake'
 end
 
-group :development, :test do
+group :debug do
   gem 'debugger'
 end
 

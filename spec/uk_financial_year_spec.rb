@@ -89,7 +89,7 @@ describe UkFinancialYear do
   describe "creation without date" do
     it "is the current financial year" do
       Timecop.freeze('5 Jul 2010'.to_date) do
-        UkFinancialYear.new.should == UkFinancialYear.from_s('2010/11')
+        expect(UkFinancialYear.new).to eq(UkFinancialYear.from_s '2010/11')
       end
     end
   end

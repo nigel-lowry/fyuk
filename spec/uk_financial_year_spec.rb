@@ -15,26 +15,26 @@ describe UkFinancialYear do
 
   specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to be < UkFinancialYear.new('6 Apr 2011'.to_date) }
 
-  describe "#to_s" do
+  describe '#to_s' do
     specify { expect(UkFinancialYear.new('7 Apr 2011'.to_date).to_s).to eq '2011/12' }
     specify { expect(UkFinancialYear.new('7 Apr 1999'.to_date).to_s).to eq '1999/00' }
   end
 
-  describe "#first_day" do
+  describe '#first_day' do
     specify { expect(UkFinancialYear.new('4 Apr 2011'.to_date).first_day).to eq '6 Apr 2010'.to_date }
     specify { expect(UkFinancialYear.new('5 Apr 2011'.to_date).first_day).to eq '6 Apr 2010'.to_date }
     specify { expect(UkFinancialYear.new('6 Apr 2011'.to_date).first_day).to eq '6 Apr 2011'.to_date }
     specify { expect(UkFinancialYear.new('7 Apr 2011'.to_date).first_day).to eq '6 Apr 2011'.to_date }
   end
 
-  describe "#last_day" do
+  describe '#last_day' do
     specify { expect(UkFinancialYear.new('4 Apr 2011'.to_date).last_day).to eq '5 Apr 2011'.to_date }
     specify { expect(UkFinancialYear.new('5 Apr 2011'.to_date).last_day).to eq '5 Apr 2011'.to_date }
     specify { expect(UkFinancialYear.new('6 Apr 2011'.to_date).last_day).to eq '5 Apr 2012'.to_date }
     specify { expect(UkFinancialYear.new('7 Apr 2011'.to_date).last_day).to eq '5 Apr 2012'.to_date }
   end
 
-  describe "#.include?" do
+  describe '#.include?' do
     subject { UkFinancialYear.from_s '2012/13' }
 
     it { is_expected.to_not include '5 Apr 2012'.to_date }
@@ -43,13 +43,13 @@ describe UkFinancialYear do
     it { is_expected.to_not include '6 Apr 2013'.to_date }
   end
 
-  describe "#from_s" do
+  describe '#from_s' do
     specify { expect(UkFinancialYear.from_s('1997/98').to_s).to eq '1997/98' }
     specify { expect(UkFinancialYear.from_s('1998/99').to_s).to eq '1998/99' }
     specify { expect(UkFinancialYear.from_s('1999/00').to_s).to eq '1999/00' }
     specify { expect(UkFinancialYear.from_s('2000/01').to_s).to eq '2000/01' }
 
-    it "raises error if years not consecutive" do
+    it 'raises error if years not consecutive' do
       expect {
         UkFinancialYear.from_s '2002/04'
       }.to raise_error(
@@ -58,7 +58,7 @@ describe UkFinancialYear do
       ) 
     end
 
-    it "raises error with wrong format" do
+    it 'raises error with wrong format' do
       expect {
         UkFinancialYear.from_s '20001/02'
       }.to raise_error(
@@ -68,7 +68,7 @@ describe UkFinancialYear do
     end
   end
 
-  describe "#adjacent" do
+  describe '#adjacent' do
     subject { UkFinancialYear.from_s '2011/12' }
 
     it { is_expected.to_not be_adjacent UkFinancialYear.from_s '2009/10' }
@@ -77,7 +77,7 @@ describe UkFinancialYear do
     it { is_expected.to_not be_adjacent UkFinancialYear.from_s '2013/14' }
   end
 
-  describe "#before? and #after?" do
+  describe '#before? and #after?' do
     subject { UkFinancialYear.from_s '2011/12' }
 
     it { is_expected.to be_before UkFinancialYear.from_s '2012/13' }
@@ -86,18 +86,18 @@ describe UkFinancialYear do
     it { is_expected.to be_after UkFinancialYear.from_s('2010/11').last_day }
   end
 
-  describe "creation without date" do
-    it "is the current financial year" do
+  describe 'creation without date' do
+    it 'is the current financial year' do
       Timecop.freeze('5 Jul 2010'.to_date) do
         expect(UkFinancialYear.new).to eq UkFinancialYear.from_s '2010/11'
       end
     end
   end
 
-  describe "#fy_before" do
+  describe '#fy_before' do
     subject { UkFinancialYear.from_s '2012/13' }
 
-    it "raises an error for a date before the FY" do
+    it 'raises an error for a date before the FY' do
       expect {
         subject.period_before('5 Apr 2012'.to_date)
       }.to raise_error(
@@ -106,7 +106,7 @@ describe UkFinancialYear do
       )
     end
 
-    it "raises an error for a date after the FY" do
+    it 'raises an error for a date after the FY' do
       expect {
         subject.period_before('6 Apr 2013'.to_date)
       }.to raise_error(

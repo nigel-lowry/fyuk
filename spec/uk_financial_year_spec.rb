@@ -13,7 +13,7 @@ describe UkFinancialYear do
   specify { expect(UkFinancialYear.new '6 Apr 2011'.to_date).to eq(UkFinancialYear.new '7 Apr 2011'.to_date) }
   specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to_not eq(UkFinancialYear.new '6 Apr 2011'.to_date) }
 
-  specify { UkFinancialYear.new('5 Apr 2011'.to_date).should be < UkFinancialYear.new('6 Apr 2011'.to_date) }
+  specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to be < UkFinancialYear.new('6 Apr 2011'.to_date) }
 
   describe "#to_s" do
     specify { expect(UkFinancialYear.new('7 Apr 2011'.to_date).to_s).to eq('2011/12') }

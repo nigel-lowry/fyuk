@@ -10,8 +10,8 @@ describe UkFinancialYear do
   its(:previous) { is_expected.to eq UkFinancialYear.from_s '2011/12' }
   its(:to_s) { is_expected.to eq '2012/13' }
 
-  specify { expect(UkFinancialYear.new '6 Apr 2011'.to_date).to eq(UkFinancialYear.new '7 Apr 2011'.to_date) }
-  specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to_not eq(UkFinancialYear.new '6 Apr 2011'.to_date) }
+  specify { expect(UkFinancialYear.new '6 Apr 2011'.to_date).to eq UkFinancialYear.new '7 Apr 2011'.to_date }
+  specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to_not eq UkFinancialYear.new '6 Apr 2011'.to_date }
 
   specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to be < UkFinancialYear.new('6 Apr 2011'.to_date) }
 

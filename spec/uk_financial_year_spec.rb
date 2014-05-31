@@ -4,11 +4,11 @@ describe UkFinancialYear do
 
   subject { UkFinancialYear.from_s '2012/13' }
 
-  its(:first_day) { should == '6 Apr 2012'.to_date }
-  its(:last_day) { should == '5 Apr 2013'.to_date }
-  its(:next) { should == UkFinancialYear.from_s('2013/14') }
-  its(:previous) { should == UkFinancialYear.from_s('2011/12') }
-  its(:to_s) { should == '2012/13' }
+  its(:first_day) { is_expected.to eq('6 Apr 2012'.to_date) }
+  its(:last_day) { is_expected.to eq('5 Apr 2013'.to_date) }
+  its(:next) { is_expected.to eq(UkFinancialYear.from_s '2013/14') }
+  its(:previous) { is_expected.to eq(UkFinancialYear.from_s '2011/12') }
+  its(:to_s) { is_expected.to eq('2012/13') }
 
   specify { expect(UkFinancialYear.new '6 Apr 2011'.to_date).to eq(UkFinancialYear.new('7 Apr 2011'.to_date)) }
   specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to_not eq(UkFinancialYear.new('6 Apr 2011'.to_date)) }

@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
+require 'rspec/its'
 require 'uk_financial_year'
 require 'timecop'
 
@@ -12,4 +13,7 @@ RSpec.configure do |config|
   config.before(:each) do
     Timecop.return
   end
+
+  config.before(:each) { GC.disable }
+  config.after(:each) { GC.enable }
 end

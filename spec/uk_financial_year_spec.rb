@@ -10,28 +10,28 @@ describe UkFinancialYear do
   its(:previous) { should == UkFinancialYear.from_s('2011/12') }
   its(:to_s) { should == '2012/13' }
 
-  specify { UkFinancialYear.new('6 Apr 2011'.to_date).should == UkFinancialYear.new('7 Apr 2011'.to_date) }
-  specify { UkFinancialYear.new('5 Apr 2011'.to_date).should_not == UkFinancialYear.new('6 Apr 2011'.to_date) }
+  specify { expect(UkFinancialYear.new '6 Apr 2011'.to_date).to eq(UkFinancialYear.new('7 Apr 2011'.to_date)) }
+  specify { expect(UkFinancialYear.new '5 Apr 2011'.to_date).to_not eq(UkFinancialYear.new('6 Apr 2011'.to_date)) }
 
   specify { UkFinancialYear.new('5 Apr 2011'.to_date).should be < UkFinancialYear.new('6 Apr 2011'.to_date) }
 
   describe "#to_s" do
-    specify { UkFinancialYear.new('7 Apr 2011'.to_date).to_s.should == '2011/12' }
-    specify { UkFinancialYear.new('7 Apr 1999'.to_date).to_s.should == '1999/00' }
+    specify { expect(UkFinancialYear.new('7 Apr 2011'.to_date).to_s).to eq('2011/12') }
+    specify { expect(UkFinancialYear.new('7 Apr 1999'.to_date).to_s).to eq('1999/00') }
   end
 
   describe "#first_day" do
-    specify { UkFinancialYear.new('4 Apr 2011'.to_date).first_day.should == '6 Apr 2010'.to_date }
-    specify { UkFinancialYear.new('5 Apr 2011'.to_date).first_day.should == '6 Apr 2010'.to_date }
-    specify { UkFinancialYear.new('6 Apr 2011'.to_date).first_day.should == '6 Apr 2011'.to_date }
-    specify { UkFinancialYear.new('7 Apr 2011'.to_date).first_day.should == '6 Apr 2011'.to_date }
+    specify { expect(UkFinancialYear.new('4 Apr 2011'.to_date).first_day).to eq('6 Apr 2010'.to_date) }
+    specify { expect(UkFinancialYear.new('5 Apr 2011'.to_date).first_day).to eq('6 Apr 2010'.to_date) }
+    specify { expect(UkFinancialYear.new('6 Apr 2011'.to_date).first_day).to eq('6 Apr 2011'.to_date) }
+    specify { expect(UkFinancialYear.new('7 Apr 2011'.to_date).first_day).to eq('6 Apr 2011'.to_date) }
   end
 
   describe "#last_day" do
-    specify { UkFinancialYear.new('4 Apr 2011'.to_date).last_day.should == '5 Apr 2011'.to_date }
-    specify { UkFinancialYear.new('5 Apr 2011'.to_date).last_day.should == '5 Apr 2011'.to_date }
-    specify { UkFinancialYear.new('6 Apr 2011'.to_date).last_day.should == '5 Apr 2012'.to_date }
-    specify { UkFinancialYear.new('7 Apr 2011'.to_date).last_day.should == '5 Apr 2012'.to_date }
+    specify { expect(UkFinancialYear.new('4 Apr 2011'.to_date).last_day).to eq('5 Apr 2011'.to_date) }
+    specify { expect(UkFinancialYear.new('5 Apr 2011'.to_date).last_day).to eq('5 Apr 2011'.to_date) }
+    specify { expect(UkFinancialYear.new('6 Apr 2011'.to_date).last_day).to eq('5 Apr 2012'.to_date) }
+    specify { expect(UkFinancialYear.new('7 Apr 2011'.to_date).last_day).to eq('5 Apr 2012'.to_date) }
   end
 
   describe "#.include?" do
@@ -44,10 +44,10 @@ describe UkFinancialYear do
   end
 
   describe "#from_s" do
-    specify { UkFinancialYear.from_s('1997/98').to_s.should == '1997/98' }
-    specify { UkFinancialYear.from_s('1998/99').to_s.should == '1998/99' }
-    specify { UkFinancialYear.from_s('1999/00').to_s.should == '1999/00' }
-    specify { UkFinancialYear.from_s('2000/01').to_s.should == '2000/01' }
+    specify { expect(UkFinancialYear.from_s('1997/98').to_s).to eq('1997/98') }
+    specify { expect(UkFinancialYear.from_s('1998/99').to_s).to eq('1998/99') }
+    specify { expect(UkFinancialYear.from_s('1999/00').to_s).to eq('1999/00') }
+    specify { expect(UkFinancialYear.from_s('2000/01').to_s).to eq('2000/01') }
 
     it "raises error if years not consecutive" do
       expect {
@@ -115,8 +115,8 @@ describe UkFinancialYear do
       )
     end
 
-    specify { subject.period_before('6 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'6 Apr 2012'.to_date) }
-    specify { subject.period_before('7 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'7 Apr 2012'.to_date) }
-    specify { subject.period_before('8 Apr 2012'.to_date).should == ('6 Apr 2012'.to_date...'8 Apr 2012'.to_date) }
+    specify { expect(subject.period_before('6 Apr 2012'.to_date)).to eq('6 Apr 2012'.to_date...'6 Apr 2012'.to_date) }
+    specify { expect(subject.period_before('7 Apr 2012'.to_date)).to eq('6 Apr 2012'.to_date...'7 Apr 2012'.to_date) }
+    specify { expect(subject.period_before('8 Apr 2012'.to_date)).to eq('6 Apr 2012'.to_date...'8 Apr 2012'.to_date) }
   end
 end

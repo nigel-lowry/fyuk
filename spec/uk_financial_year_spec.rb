@@ -71,10 +71,10 @@ describe UkFinancialYear do
   describe "#adjacent" do
     subject { UkFinancialYear.from_s '2011/12' }
 
-    it { should_not be_adjacent UkFinancialYear.from_s '2009/10' }
-    it { should be_adjacent UkFinancialYear.from_s '2010/11' }
-    it { should be_adjacent UkFinancialYear.from_s '2012/13' }
-    it { should_not be_adjacent UkFinancialYear.from_s '2013/14' }
+    it { is_expected.to_not be_adjacent UkFinancialYear.from_s '2009/10' }
+    it { is_expected.to be_adjacent UkFinancialYear.from_s '2010/11' }
+    it { is_expected.to be_adjacent UkFinancialYear.from_s '2012/13' }
+    it { is_expected.to_not be_adjacent UkFinancialYear.from_s '2013/14' }
   end
 
   describe "#before? and #after?" do

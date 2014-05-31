@@ -37,10 +37,10 @@ describe UkFinancialYear do
   describe "#.include?" do
     subject { UkFinancialYear.from_s '2012/13' }
 
-    it { should_not include '5 Apr 2012'.to_date }
-    it { should include '6 Apr 2012'.to_date }
-    it { should include '5 Apr 2013'.to_date }
-    it { should_not include '6 Apr 2013'.to_date } 
+    it { is_expected.to_not include '5 Apr 2012'.to_date }
+    it { is_expected.to include '6 Apr 2012'.to_date }
+    it { is_expected.to include '5 Apr 2013'.to_date }
+    it { is_expected.to_not include '6 Apr 2013'.to_date }
   end
 
   describe "#from_s" do

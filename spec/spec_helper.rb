@@ -13,4 +13,7 @@ RSpec.configure do |config|
   config.before(:each) do
     Timecop.return
   end
+
+  config.before(:each) { GC.disable }
+  config.after(:each) { GC.enable }
 end
